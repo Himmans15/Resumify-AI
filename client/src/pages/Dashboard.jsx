@@ -1,5 +1,6 @@
 import {
   FilePenLineIcon,
+  PencilIcon,
   PlusIcon,
   TrashIcon,
   UploadCloud,
@@ -17,7 +18,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    loadAllResumes;
+    loadAllResumes();
   }, []);
 
   return (
@@ -26,7 +27,7 @@ const Dashboard = () => {
         <p className="text-2xl font-medium mb-6 bg-gradient-to-r from-slate-600 to-slate-700 bg-clip-text text-transparent sm:hidden">
           Welcome, Himans
         </p>
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex justify-center  gap-4">
           <button className="w-full bg-white sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 text-slate-600 border border-dashed border-slate-300 group hover:border-indigo-500 hover:shadow-lg transition-all duration-300 cursor-pointer">
             <PlusIcon className="size-11 transition-all duration-300 p-2.5 bg-gradient-to-br from-indigo-300 to-indigo-500 text-white rounded-full" />
             <p className="text-sm group-hover:text-indigo-600 transition-all duration-300">
@@ -41,7 +42,7 @@ const Dashboard = () => {
           </button>
         </div>
         <hr className="border-slate-300 mx-auto my-6 sm:w-[305px]" />
-        <div className="grid grid-cols-2 sm:flex flex-wrap gap-4">
+        <div className="grid grid-cols-2 sm:flex flex-wrap justify-center gap-4">
           {allResumes.map((resume, idx) => {
             const baseColor = colors[idx % colors.length];
             return (
@@ -71,6 +72,7 @@ const Dashboard = () => {
                 </p>
                 <div className="absolute top-1 right-1 group-hover:flex items-center hidden">
                   <TrashIcon className="size-7 p-1.5 hover:bg-white/50 rounded text-slate-700 transition-colors" />
+                  <PencilIcon className="size-7 p-1.5 hover:bg-white/50 rounded text-slate-700 transition-colors" />
                 </div>
               </button>
             );

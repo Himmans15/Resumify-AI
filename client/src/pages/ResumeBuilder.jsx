@@ -13,6 +13,7 @@ import {
   User,
 } from "lucide-react";
 import PersonalInfoForm from "../components/PersonalInfoForm";
+import ResumePreview from "../components/ResumePreview";
 
 const ResumeBuilder = () => {
   const { resumeId } = useParams();
@@ -139,7 +140,16 @@ const ResumeBuilder = () => {
           </div>
 
           {/* Right Panel - Preview */}
-          <div></div>
+          <div className="lg:col-span-7 max-lg:mt-6">
+            <div>{/* Buttons */}</div>
+
+            {/* Resume Preview */}
+            <ResumePreview
+              data={resumeData}
+              template={resumeData.template}
+              accentColor={resumeData.accent_color}
+            />
+          </div>
         </div>
       </div>
     </div>

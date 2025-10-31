@@ -1,4 +1,4 @@
-import { Briefcase, Plus, Trash2 } from "lucide-react";
+import { Briefcase, Plus, Sparkle, Trash2 } from "lucide-react";
 import React from "react";
 
 const ExperienceForm = ({ data, onChange }) => {
@@ -105,6 +105,7 @@ const ExperienceForm = ({ data, onChange }) => {
               <label>
                 <input
                   type="checkbox"
+                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                   checked={experience.is_current || false}
                   onChange={(e) => {
                     updateExperience(
@@ -114,7 +115,19 @@ const ExperienceForm = ({ data, onChange }) => {
                     );
                   }}
                 />
+                <span className="text-sm text-gray-700">
+                  Currently working here
+                </span>
               </label>
+              <div className="space-y-2">
+                <div>
+                  <label>Job Description</label>
+                  <button>
+                    <Sparkle className="w-3 h-3" />
+                    Enhance with AI
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>

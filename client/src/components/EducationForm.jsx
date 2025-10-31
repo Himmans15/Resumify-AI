@@ -1,4 +1,4 @@
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Plus, Trash2 } from "lucide-react";
 import React from "react";
 
 const EducationForm = ({ data, onChange }) => {
@@ -83,61 +83,32 @@ const EducationForm = ({ data, onChange }) => {
                 />
 
                 <input
-                  value={experience.start_date || ""}
+                  value={education.field || ""}
                   onChange={(e) =>
-                    updateEducation(idx, "start_date", e.target.value)
+                    updateEducation(idx, "field", e.target.value)
                   }
-                  type="month"
+                  type="text"
+                  placeholder="Field of Study"
                   className="px-3 py-2 text-sm "
                 />
 
                 <input
-                  value={experience.end_date || ""}
+                  value={education.graduation_date || ""}
                   onChange={(e) =>
-                    updateExperience(idx, "end_date", e.target.value)
+                    updateEducation(idx, "graduation_date", e.target.value)
                   }
                   type="month"
-                  disabled={experience.is_current}
-                  className="px-3 py-2 text-sm disabled:bg-gray-100"
+                  className="px-3 py-2 text-sm "
                 />
               </div>
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  checked={experience.is_current || false}
-                  onChange={(e) => {
-                    updateExperience(
-                      idx,
-                      "is_current",
-                      e.target.checked ? true : false
-                    );
-                  }}
-                />
-                <span className="text-sm text-gray-700">
-                  Currently working here
-                </span>
-              </label>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium text-gray-700">
-                    Job Description
-                  </label>
-                  <button className="flex items-center gap-1 px-2 py-1 text-xs bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors disabled:opacity-50 ">
-                    <Sparkle className="w-3 h-3" />
-                    Enhance with AI
-                  </button>
-                </div>
-                <textarea
-                  value={experience.description || ""}
-                  onChange={(e) =>
-                    updateExperience(idx, "description", e.target.value)
-                  }
-                  rows={4}
-                  className="w-full text-sm px-3 py-2 rounded-lg resize-none"
-                  placeholder="Describe your key responsibilities and achievements...."
-                />
-              </div>
+
+              <input
+                value={education.gpa || ""}
+                onChange={(e) => updateEducation(idx, "gpa", e.target.value)}
+                type="text"
+                placeholder="GPA (optional)"
+                className="px-3 py-2 text-sm "
+              />
             </div>
           ))}
         </div>

@@ -254,6 +254,7 @@ const ResumeBuilder = () => {
                     className="flex items-center p-2 px-4 gap-2 text-xs bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600 rounded-lg ring-blue-300 hover:ring transition-colors"
                   >
                     <Share2Icon className="size-4" />
+                    Share
                   </button>
                 )}
                 <button
@@ -269,7 +270,7 @@ const ResumeBuilder = () => {
                 </button>
                 <button
                   onClick={downloadResume}
-                  className="flex items-center gap-2 px-6 py-2 text-xs bg-gradient-to-br from-indigo-100 to-indigo-200 text-indigo-600 rounded-lg ring-indigo-300 hover:ring transition-colors"
+                  className="flex items-center gap-2 px-6 py-2 text-xs bg-gradient-to-br from-green-100 to-green-200 text-green-600 rounded-lg ring-green-300 hover:ring transition-colors"
                 >
                   <DownloadIcon className="size-4" /> Download
                 </button>

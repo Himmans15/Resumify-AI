@@ -52,7 +52,7 @@ const ProjectForm = ({ data, onChange }) => {
                 <Trash2 className="size-4" />
               </button>
             </div>
-            <div className="grid md:grid-cols-2 gap-3">
+            <div className="grid gap-3">
               <input
                 value={project.name || ""}
                 onChange={(e) => updateProject(idx, "name", e.target.value)}

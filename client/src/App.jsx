@@ -6,8 +6,27 @@ import Dashboard from "./pages/Dashboard";
 import ResumeBuilder from "./pages/ResumeBuilder";
 import Preview from "./pages/Preview";
 import Login from "./pages/Login";
+import { useDispatch } from "react-redux";
+import api from "./configs/api";
+import { login } from "./app/features/authSlice";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  const getUserData = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      if (token) {
+        const { data } = await api.get("/api/users/data", {
+          headers: { Authorization: token },
+        });
+        if (data.user) {
+          dispatch(login);
+        }
+      }
+    } catch (error) {}
+  };
+
   return (
     <>
       <Routes>
@@ -17,7 +36,6 @@ const App = () => {
           <Route path="builder/:resumeId" element={<ResumeBuilder />} />
         </Route>
         <Route path="view/:resumeId" element={<Preview />} />
-        <Route path="login" element={<Login />} />
       </Routes>
     </>
   );

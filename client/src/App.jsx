@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
@@ -8,7 +8,7 @@ import Preview from "./pages/Preview";
 import Login from "./pages/Login";
 import { useDispatch } from "react-redux";
 import api from "./configs/api";
-import { login } from "./app/features/authSlice";
+import { login, setLoading } from "./app/features/authSlice";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,11 +21,21 @@ const App = () => {
           headers: { Authorization: token },
         });
         if (data.user) {
-          dispatch(login);
+          dispatch(login({ token, user: data.user }));
         }
+        dispatch(setLoading(false));
+      } else {
+        dispatch(setLoading(false));
       }
-    } catch (error) {}
+    } catch (error) {
+      dispatch(setLoading(false));
+      console.log(error.message);
+    }
   };
+
+  useEffect(() => {
+    getUserData();
+  });
 
   return (
     <>

@@ -131,7 +131,16 @@ const ResumeBuilder = () => {
       removeBackground && formData.append("removeBackground", "yes");
       typeof resumeData.personal_info.image === "object" &&
         formData.append("image", resumeData.personal_info.image);
-    } catch (error) {}
+
+      const { data } = await api.put("/api/resumes/update", formData, {
+        headers: { Authorization: token },
+      });
+
+      setResumeData(data.resume);
+      toast.success(data.message);
+    } catch (error) {
+      console.error("Error saving resume:", error);
+    }
   };
 
   return (
@@ -284,7 +293,12 @@ const ResumeBuilder = () => {
                   />
                 )}
               </div>
-              <button className="bg-gradient-to-br from-blue-100 to-blue-200 ring-blue-300 text-blue-600 ring hover:ring-blue-400 transition-all rounded-md px-6 py-2 mt-6 text-sm">
+              <button
+                onClick={() => {
+                  toast.promise(saveResume, { loading: "Saving..." });
+                }}
+                className="bg-gradient-to-br from-blue-100 to-blue-200 ring-blue-300 text-blue-600 ring hover:ring-blue-400 transition-all rounded-md px-6 py-2 mt-6 text-sm"
+              >
                 Save Changes
               </button>
             </div>
